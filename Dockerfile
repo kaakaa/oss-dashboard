@@ -1,4 +1,4 @@
-FROM ruby:2.4.5
+FROM ruby:2.6.6
 
 RUN apt update && apt install --no-install-recommends -y \
   build-essential \
@@ -18,7 +18,7 @@ RUN apt update && apt install --no-install-recommends -y \
 WORKDIR /oss-dashboard
 
 COPY ./Gemfile /oss-dashboard/Gemfile
-COPY ./Gemfile.lock /oss-dashboard/Gemfile.lock
+# COPY ./Gemfile.lock /oss-dashboard/Gemfile.lock
 COPY ./Rakefile /oss-dashboard/Rakefile
 RUN gem install bundler \
   && bundle install --path vendor/bundle
